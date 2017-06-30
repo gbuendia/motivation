@@ -55,11 +55,11 @@ label.pack()
 # fg and bg change text and background colors but macos does not support that
 btn_refresh = tkinter.Button(text="More inspiration",fg="white",bg="black")
 # Pack the button, filling the width
-btn_refresh.pack(side="left")
+btn_refresh.pack(side="left",expand=True)
 
 # Create the button to quit
 btn_quit = tkinter.Button(text="Quit",fg="white",bg="black",command=quit)
-btn_quit.pack(side="right")
+btn_quit.pack(side="right",expand=True)
 
 # Draw the window, start app
 window.mainloop()
