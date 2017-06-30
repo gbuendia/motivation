@@ -9,7 +9,6 @@ import time
 import sys
 # Image display as per https://www.daniweb.com/programming/software-development/code/493005/display-an-image-from-the-web-tkinter
 import io
-from urllib.request import Request, urlopen
 # Apparently PIL doesn't work in Python3
 # so pillow has to be installed first
 from PIL import Image, ImageTk
