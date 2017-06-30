@@ -38,10 +38,17 @@ def updateimage():
 	# Not sure what the garbage collection does:
 	# https://stackoverflow.com/questions/3482081/how-to-update-the-image-of-a-tkinter-label-widget
 	label.image = another_motivational
+	# Let 3 secs pass to not abuse the server
+	temp_btn_disable(3)
 
 def quit():
 	global window
 	window.destroy()
+
+def temp_btn_disable(seconds):
+	label.configure(state = "disabled")
+	time.sleep(seconds)
+	label.configure(state = "normal")
 
 # Create new window
 window = tkinter.Tk()
