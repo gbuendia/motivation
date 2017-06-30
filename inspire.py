@@ -35,8 +35,8 @@ def getimage(url):
 window = tkinter.Tk()
 # Decorate window
 window.title("Inspire")
-window.geometry("650x650") # Apparently all images returned by InspireBot are this size
-window.wm_iconbitmap('lightbulb.ico')
+window.geometry("650x682") # Apparently all images returned by InspireBot are this 650x650
+window.wm_iconbitmap("lightbulb.ico")
 
 # Get the image
 motivational = getimage(inspire())
@@ -46,6 +46,12 @@ tk_picture = ImageTk.PhotoImage(motivational)
 label = tkinter.Label(window, image = tk_picture)
 # Pack (add) it into window
 label.pack()
+
+# Create the button, to be used to refresh
+# fg and bg change text and background colors but macos does not support that
+btn_refresh = tkinter.Button(text="More inspiration",fg="white",bg="black")
+# Pack the button, filling the width
+btn_refresh.pack(fill=tkinter.X)
 
 # Draw the window, start app
 window.mainloop()
