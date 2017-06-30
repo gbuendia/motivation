@@ -1,7 +1,7 @@
 # Crude motivation
 A practice project in which I intend to learn TkInter.
 
-## What it does
+## What it does
 Open a window.
 Get a random image (server decides) from Inspirobot.
 Slap it on the window, together with a couple of buttons to refresh and close.
