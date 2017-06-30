@@ -34,36 +34,36 @@ def getimage(url):
 
 def updateimage():
 	another_motivational = getimage(inspire())
-	label.configure(image = another_motivational)
+	poster.configure(image = another_motivational)
 	# Not sure what the garbage collection does:
 	# https://stackoverflow.com/questions/3482081/how-to-update-the-image-of-a-tkinter-label-widget
-	label.image = another_motivational
+	poster.image = another_motivational
 	# Let 3 secs pass to not abuse the server
 	temp_btn_disable(3)
 
 def quit():
-	global window
-	window.destroy()
+	global root
+	root.destroy()
 
 def temp_btn_disable(seconds):
-	label.configure(state = "disabled")
+	poster.configure(state = "disabled")
 	time.sleep(seconds)
-	label.configure(state = "normal")
+	poster.configure(state = "normal")
 
 # Create new window
-window = tkinter.Tk()
+root = tkinter.Tk()
 # Decorate window
-window.title("Inspire")
-window.geometry("650x682") # Apparently all images returned by InspireBot are this 650x650
-window.wm_iconbitmap("lightbulb.ico")
+root.title("Inspire")
+root.geometry("650x682") # Apparently all images returned by InspireBot are this 650x650
+root.wm_iconbitmap("lightbulb.ico")
 
 # Put the image on the window for first time
 # Get the image
 motivational = getimage(inspire())
 # Put the image on a typical widget
-label = tkinter.Label(window, image = motivational)
+poster = tkinter.Label(root, image = motivational)
 # Pack (add) it into window
-label.pack()
+poster.pack()
 
 # Create the button, to be used to refresh
 # fg and bg change text and background colors but macos does not support that
@@ -76,4 +76,4 @@ btn_quit = tkinter.Button(text="Quit",fg="white",bg="black",command=quit)
 btn_quit.pack(side="right",expand=True)
 
 # Draw the window, start app
-window.mainloop()
+root.mainloop()
