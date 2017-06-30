@@ -29,7 +29,16 @@ def getimage(url):
 	picture = io.BytesIO(picdata.content)
 	# Use PIL to read formats like jpg, png...
 	picture_pil = Image.open(picture)
-	return picture_pil
+	# Convert to an image that TKinter can handle
+	tk_picture = ImageTk.PhotoImage(picture_pil)
+	return tk_picture
+
+def updateimage():
+	another_motivational = getimage(inspire())
+	label.configure(image = another_motivational)
+	# Not sure what the garbage collection does:
+	# https://stackoverflow.com/questions/3482081/how-to-update-the-image-of-a-tkinter-label-widget
+	label.image = another_motivational
 
 def quit():
 	global window
@@ -42,18 +51,17 @@ window.title("Inspire")
 window.geometry("650x682") # Apparently all images returned by InspireBot are this 650x650
 window.wm_iconbitmap("lightbulb.ico")
 
+# Put the image on the window for first time
 # Get the image
 motivational = getimage(inspire())
-# Convert to an image that TKinter can handle
-tk_picture = ImageTk.PhotoImage(motivational)
 # Put the image on a typical widget
-label = tkinter.Label(window, image = tk_picture)
+label = tkinter.Label(window, image = motivational)
 # Pack (add) it into window
 label.pack()
 
 # Create the button, to be used to refresh
 # fg and bg change text and background colors but macos does not support that
-btn_refresh = tkinter.Button(text="More inspiration",fg="white",bg="black")
+btn_refresh = tkinter.Button(text="More inspiration",fg="white",bg="black",command=updateimage)
 # Pack the button, filling the width
 btn_refresh.pack(side="left",expand=True)
 
