@@ -14,18 +14,16 @@ from urllib.request import Request, urlopen
 # so pillow has to be installed first
 from PIL import Image, ImageTk
 
-def inspire():
-	# define HTTP headers
-	headerDict = {
+# Headers for the requests we make, otherwise we'll get error 403
+headerDict = {
 		"User-Agent" : "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19" 
 	}
+
+def inspire():
 	resultURL = requests.get("http://inspirobot.me/api?generate=true",stream=False,headers=headerDict).text
 	return resultURL
 
 def getimage(url):
-	headerDict = {
-		"User-Agent" : "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19" 
-	}
 	picdata = requests.get(url,headers=headerDict)
 	# Create an image file object
 	picture = io.BytesIO(picdata.content)
