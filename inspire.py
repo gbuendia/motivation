@@ -31,6 +31,10 @@ def getimage(url):
 	picture_pil = Image.open(picture)
 	return picture_pil
 
+def quit():
+	global window
+	window.destroy()
+
 # Create new window
 window = tkinter.Tk()
 # Decorate window
@@ -51,7 +55,11 @@ label.pack()
 # fg and bg change text and background colors but macos does not support that
 btn_refresh = tkinter.Button(text="More inspiration",fg="white",bg="black")
 # Pack the button, filling the width
-btn_refresh.pack(fill=tkinter.X)
+btn_refresh.pack(side="left")
+
+# Create the button to quit
+btn_quit = tkinter.Button(text="Quit",fg="white",bg="black",command=quit)
+btn_quit.pack(side="right")
 
 # Draw the window, start app
 window.mainloop()
