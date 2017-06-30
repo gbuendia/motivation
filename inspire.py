@@ -45,7 +45,7 @@ tk_picture = ImageTk.PhotoImage(motivational)
 # Put the image on a typical widget
 label = tkinter.Label(window, image = tk_picture)
 # Pack (add) it into window
-label.pack(padx=0, pady=0)
+label.pack()
 
 # Draw the window, start app
 window.mainloop()
